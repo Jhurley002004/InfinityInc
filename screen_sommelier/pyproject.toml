@@ -1,16 +1,11 @@
 [project]
-name = "flaskr"
+name = "screen_sommelier"
 version = "1.0.0"
-description = "The basic blog app built in the Flask tutorial."
-readme = "README.rst"
-license = {text = "BSD-3-Clause"}
-maintainers = [{name = "Pallets", email = "contact@palletsprojects.com"}]
+description = "The app to find recommendations based on your streaming services."
+readme = "README.md"
 dependencies = [
     "flask",
 ]
-
-[project.urls]
-Documentation = "https://flask.palletsprojects.com/tutorial/"
 
 [project.optional-dependencies]
 test = ["pytest"]
@@ -20,7 +15,7 @@ requires = ["flit_core<4"]
 build-backend = "flit_core.buildapi"
 
 [tool.flit.module]
-name = "flaskr"
+name = "screen_sommelier"
 
 [tool.flit.sdist]
 include = [
@@ -33,7 +28,7 @@ filterwarnings = ["error"]
 
 [tool.coverage.run]
 branch = true
-source = ["flaskr", "tests"]
+source = ["screen_sommelier", "tests"]
 
 [tool.ruff]
 src = ["src"]

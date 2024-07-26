@@ -2,7 +2,7 @@ import sqlite3
 
 import pytest
 
-from flaskr.db import get_db
+from screen_sommelier.db import get_db
 
 
 def test_get_close_db(app):
