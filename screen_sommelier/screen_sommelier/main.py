@@ -4,6 +4,7 @@ from screen_sommelier.movie_fetcher import fetch_and_store_movies, get_db
 
 bp = Blueprint('main', __name__)
 
+
 @bp.route('/')
 @login_required
 def popular():
