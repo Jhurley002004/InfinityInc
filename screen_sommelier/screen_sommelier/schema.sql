@@ -2,19 +2,38 @@
 -- Drop any existing data and create empty tables.
 
 DROP TABLE IF EXISTS user;
-DROP TABLE IF EXISTS post;
 
 CREATE TABLE user (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  username TEXT UNIQUE NOT NULL,
-  password TEXT NOT NULL
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL
 );
 
-CREATE TABLE post (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  author_id INTEGER NOT NULL,
-  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  title TEXT NOT NULL,
-  body TEXT NOT NULL,
-  FOREIGN KEY (author_id) REFERENCES user (id)
+DROP TABLE IF EXISTS movies;
+
+CREATE TABLE movies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    imdb_id TEXT NOT NULL UNIQUE,
+    title TEXT NOT NULL,
+    year TEXT,
+    rated TEXT,
+    released TEXT,
+    runtime TEXT,
+    genre TEXT,
+    director TEXT,
+    writer TEXT,
+    actors TEXT,
+    plot TEXT,
+    language TEXT,
+    country TEXT,
+    awards TEXT,
+    metascore TEXT,
+    imdb_rating TEXT,
+    imdb_votes TEXT,
+    box_office TEXT,
+    production TEXT,
+    website TEXT,
+    poster TEXT,
+    category TEXT 
 );
+

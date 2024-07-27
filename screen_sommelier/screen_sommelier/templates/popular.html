@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popular and Top-Rated Movies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #141414;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .slider-container {
+            width: 90%;
+            overflow-x: auto;
+            white-space: nowrap;
+            margin-bottom: 30px;
+        }
+        .slider {
+            display: inline-block;
+        }
+        .movie {
+            display: inline-block;
+            margin-right: 10px;
+            background-color: #222;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 200px;
+            vertical-align: top;
+        }
+        .movie img {
+            width: 100%;
+            height: auto;
+        }
+        .movie-title {
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Popular Movies</h1>
+        <div class="slider-container">
+            <div class="slider">
+                {% for movie in popular_movies %}
+                    <div class="movie">
+                        <img src="{{ movie.poster }}" alt="{{ movie.title }} Poster">
+                        <div class="movie-title">{{ movie.title }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <h1>Top-Rated Movies</h1>
+        <div class="slider-container">
+            <div class="slider">
+                {% for movie in top_rated_movies %}
+                    <div class="movie">
+                        <img src="{{ movie.poster }}" alt="{{ movie.title }} Poster">
+                        <div class="movie-title">{{ movie.title }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
