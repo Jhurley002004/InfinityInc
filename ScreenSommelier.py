@@ -25,10 +25,22 @@ will result in error code. Tables can only be created once
 # cur.execute("""CREATE TABLE movies(
 #             ID integer
 #             Title text
+#             LeadActor text
+#             SupportingActor text   
 #             Genre text
-#             MovieRating text
-#             UserRating text
+#             Rated text
+#             ReleaseYear text
+#             Streaming text
+#             RunTime text
+#             Director text
+#             Writer text
+#             Language text
+#             Country text
+#             UserRating integer
 #              )""")
+
+
+#cur.execute('DROP TABLE movies')
 
 
 # Commits changes to the database
