@@ -7,6 +7,8 @@ from screen_sommelier.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
+# Need to add 'email' column to user table then
+# get from request.form['email']
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
@@ -37,31 +39,6 @@ def register():
 
     return render_template('auth/register.html')
 
-@bp.route('/login', methods=('GET', 'POST'))
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        db = get_db()
-        error = None
-        user = db.execute(
-            'SELECT * FROM user WHERE username = ?', (username,)
-        ).fetchone()
-
-        if user is None:
-            error = 'Incorrect username.'
-        elif not check_password_hash(user['password'], password):
-            error = 'Incorrect password.'
-
-        if error is None:
-            session.clear()
-            session['user_id'] = user['id']
-            return redirect(url_for('main.index'))
-
-        flash(error)
-
-    return render_template('auth/login.html')
-
 @bp.before_app_request
 def load_logged_in_user():
     user_id = session.get('user_id')
@@ -76,7 +53,7 @@ def load_logged_in_user():
 @bp.route('/logout')
 def logout():
     session.clear()
-    return render_template('auth/login.html')
+    return redirect(url_for('auth.landing_page'))
 
 @bp.before_app_request
 def load_logged_in_user():
@@ -97,11 +74,30 @@ def landing_page():
         action = request.form["action"]
         print(action)
         if action == "login":
-            # Need to setup login behavior and redirection
-            # Temporarily redirect to library home
+            username = request.form['username']
+            password = request.form['password']
+            db = get_db()
+            error = None
+            user = db.execute(
+                'SELECT * FROM user WHERE username = ?', (username,)
+            ).fetchone()
+
+            if user is None:
+                error = 'Incorrect username.'
+            elif not check_password_hash(user['password'], password):
+                error = 'Incorrect password.'
+
+            if error is None:
+                session.clear()
+                session['user_id'] = user['id']
+                return redirect(url_for('library.library_home'))
+
+            flash(error)
             return redirect(url_for('library.library_home'))
+        
         elif action == "register":
             # Also need to carry over the email if entered.
+            session['email'] = request.form['email']
             return redirect(url_for('auth.register'))
         
     return render_template('/auth/landing_page.html')
@@ -112,7 +108,7 @@ def login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
         if g.user is None:
-            return redirect(url_for("auth.login"))
+            return redirect(url_for("auth.landing_page"))
 
         return view(**kwargs)
 

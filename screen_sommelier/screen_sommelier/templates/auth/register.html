@@ -8,8 +8,9 @@
     <form method="post" id="register_form">
       <label for="username">Username</label>
       <input name="username" id="username" required>
+      <!-- Removed 'required' from email until a column is added to table -->
       <label for="email">Email</label>
-      <input name="email" type="email" required>
+      <input name="email" type="email" value="{{ session['email'] }}">
       <label for="password">Password</label>
       <input type="password" name="password" id="password" required>
       <button type="submit" action="register">Register</button>
