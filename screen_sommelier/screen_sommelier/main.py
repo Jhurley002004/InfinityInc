@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
-from screen_sommelier.auth import login_required
-from screen_sommelier.movie_fetcher import fetch_and_store_movies, get_db
+from .auth import login_required
+from .movie_fetcher import fetch_and_store_movies, get_db
 
 bp = Blueprint('main', __name__)
 
