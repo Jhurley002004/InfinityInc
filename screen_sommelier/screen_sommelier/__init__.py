@@ -4,7 +4,11 @@ from . import db
 
 def create_app():
     app = Flask(__name__)
+def create_app():
+    app = Flask(__name__)
     app.config.from_mapping(
+        SECRET_KEY='dev',
+        DATABASE=os.path.join(app.instance_path, 'screen_sommelier.sqlite'),
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'screen_sommelier.sqlite'),
     )
