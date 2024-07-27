@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <h1 id="sign_up_h1">Find your new favorites, fast.</h1>
+    <div id="sign_up_form">
+        <form method="post">
+            <input name="email" type="email" placeholder="Email Address" required>
+            <button type="submit" name="action" value="register">Submit</button>
+        </form>
+    </div>
+
+    <div id="pitch">
+        <h2>Make movie night fun again.</h2>
+        <h3>We create recommendations for you basded on your shared viewing 
+        history and ratings.
+        <br>
+        Once you decide what to watch, find it streaming with one click.</h3>
+        <h3><a href="" id="learn_more">Learn More</a></h3>
+    </div>
+{% endblock %}

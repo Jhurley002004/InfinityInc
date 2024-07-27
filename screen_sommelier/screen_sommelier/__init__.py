@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, redirect, url_for
 
 
 def create_app(test_config=None):
@@ -29,6 +29,10 @@ def create_app(test_config=None):
     @app.route("/hello")
     def hello():
         return "Hello, World!"
+    
+    @app.route("/")
+    def send_to_landing():
+        return redirect(url_for('auth.landing_page'))
 
     # register the database commands
     from . import db
@@ -38,9 +42,11 @@ def create_app(test_config=None):
     # apply the blueprints to the app
     from . import auth
     from . import blog
+    from . import library
 
     app.register_blueprint(auth.bp)
     app.register_blueprint(blog.bp)
+    app.register_blueprint(library.bp)
 
     # make url_for('index') == url_for('blog.index')
     # in another app, you might define a separate main index here with

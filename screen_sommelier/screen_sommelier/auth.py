@@ -74,7 +74,7 @@ def register():
                 error = f"User {username} is already registered."
             else:
                 # Success, go to the login page.
-                return redirect(url_for("auth.login"))
+                return redirect(url_for("auth.landing_page"))
 
         flash(error)
 
@@ -114,3 +114,20 @@ def logout():
     """Clear the current session, including the stored user id."""
     session.clear()
     return redirect(url_for("index"))
+
+
+@bp.route('/landing', methods = ('GET', 'POST'))
+def landing_page():
+    if request.method == 'POST':
+
+        action = request.form["action"]
+        print(action)
+        if action == "login":
+            # Need to setup login behavior and redirection
+            # Temporarily redirect to library home
+            return redirect(url_for('library.library_home'))
+        elif action == "register":
+            # Also need to carry over the email if entered.
+            return redirect(url_for('auth.register'))
+        
+    return render_template('/auth/landing_page.html')

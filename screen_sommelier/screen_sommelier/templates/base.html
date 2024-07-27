@@ -1,7 +1,7 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - Flaskr</title>
+<title>{% block title %}{% endblock %} - Screen Sommelier</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<nav>
+{# <nav>
   <h1><a href="{{ url_for('index') }}">Flaskr</a></h1>
   <ul>
     {% if g.user %}
@@ -12,7 +12,20 @@
       <li><a href="{{ url_for('auth.login') }}">Log In</a>
     {% endif %}
   </ul>
-</nav>
+</nav> #}
+<div id="login_div">
+    <a href="{{ url_for('auth.landing_page') }}"><img src="{{ url_for('static', filename='logo.png')}}" id="logo"></a>
+    {% block searchbar %}{% endblock %}
+    <form method="post" id="login_form">
+        <label for="username">Username</label>
+        <input for="username" required>
+        <br>
+        <label for="password">Password</label>
+        <input name="password" id="password" type="password" required>
+        <br>
+        <button type="submit" name="action" value="login">Login</button>
+    </form>
+</div>
 <section class="content">
   <header>
     {% block header %}{% endblock %}

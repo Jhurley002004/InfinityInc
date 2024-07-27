@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block searchbar %}
+    <input id="searchbar" placeholder="Search...">
+{% endblock %}
+
+{% block content %}
+    <div class="content_container">
+        {% block sidebar %}
+        <div id="sidebar">
+            <a href=""><h2>Home</h2></a>
+            <a href=""><h2>Browse</h2></a>
+            <a href=""><h2>Settings</h2></a>
+        </div>
+        {% endblock %}
+    </div>
+{% endblock %}
