@@ -4,11 +4,7 @@ from . import db
 
 def create_app():
     app = Flask(__name__)
-def create_app():
-    app = Flask(__name__)
     app.config.from_mapping(
-        SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'screen_sommelier.sqlite'),
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'screen_sommelier.sqlite'),
     )
@@ -32,7 +28,6 @@ def create_app():
     db.init_app(app)
 
     from . import auth
-    # from . import blog
     from . import library
 
     app.register_blueprint(auth.bp)
