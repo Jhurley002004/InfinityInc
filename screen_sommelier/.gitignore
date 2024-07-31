@@ -11,3 +11,6 @@ build/
 .idea/
 *.swp
 *~
+.env
+bootstrap.bat
+venv/
