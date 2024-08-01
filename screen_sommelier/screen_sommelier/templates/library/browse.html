@@ -1,0 +1,43 @@
+{% extends 'library/library_base.html' %}
+
+{% block main_content %}
+    <h2 class="section_header">Recommendations</h2>
+    <div class="multi_movie_slider">
+        {% for i in range(18) %}
+            <div class="slider_movie">
+                <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
+                <a class="slider_link" href=""><p>Movie You'd Like</p></a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <h2 class="section_header">New Releases</h2>
+    <div class="multi_movie_slider">
+        {% for i in range(18) %}
+            <div class="slider_movie">
+                <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
+                <a class="slider_link" href=""><p>New & Exciting</p></a>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <h2 class="section_header">By Genre: Action</h2>
+    <div class="multi_movie_slider">
+        {% for i in range(18) %}
+            <div class="slider_movie">
+                <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
+                <a class="slider_link" href=""><p>Nicolas Cage Film</p></a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <h2 class="section_header">By Genre: Horror</h2>
+    <div class="multi_movie_slider">
+        {% for i in range(18) %}
+            <div class="slider_movie">
+                <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
+                <a class="slider_link" href=""><p>Very Scary</p></a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

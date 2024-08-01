@@ -9,7 +9,7 @@ bp = Blueprint('library', __name__, url_prefix = '/library')
 
 @bp.route('/')
 def library_home():
-    return render_template("library/library_base.html")
+    return render_template("library/browse.html")
 
 @bp.route('/settings', methods = ('GET', 'POST'))
 def settings():

@@ -59,6 +59,14 @@ button {
   float: right;
 }
 
+#corner_image {
+  width: 75px;
+}
+
+#corner_username {
+  text-align: center;
+}
+
 /* LANDING PAGE */
 
 #sign_up_h1 {
@@ -141,9 +149,43 @@ button {
   text-align: center;
 }
 
+#main_content {
+  max-width: inherit;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/* BROWSE PAGE */
+
+.multi_movie_slider {
+  max-width: 95%;
+  text-wrap: nowrap;
+  height: 250px;
+  overflow-x: scroll;
+  padding: 0 20px;
+  margin: 0 0 20px 0;
+}
+
+.slider_movie {
+  margin: 5px 10px;
+  display: inline-block;
+  width: 125px;
+  text-align: center;
+}
+
+.slider_image {
+  width: 100px;
+}
+
+.slider_link {
+  width: 100%;
+  text-align: center;
+  text-wrap: wrap;
+}
+
 /* SETTINGS PAGE */
 
-.settings_header {
+.section_header {
   background-color: var(--plum);
   font-size: 35px;
   margin: 0 0 20px 0;
