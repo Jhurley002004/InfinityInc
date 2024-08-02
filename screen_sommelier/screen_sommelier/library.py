@@ -11,6 +11,10 @@ bp = Blueprint('library', __name__, url_prefix = '/library')
 def library_home():
     return render_template("library/browse.html")
 
+@bp.route('/movie')
+def movie():
+    return render_template('library/movie.html')
+
 @bp.route('/settings', methods = ('GET', 'POST'))
 def settings():
     if request.method == 'POST':
