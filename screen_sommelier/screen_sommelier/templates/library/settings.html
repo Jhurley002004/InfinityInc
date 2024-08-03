@@ -1,0 +1,46 @@
+{% extends "library/library_base.html" %}
+
+{% block main_content %}
+    <h2 class="settings_header">Subscriptions</h2>
+    <div class="settings_section">
+        <form method="post">
+            <div id="subscriptions_grid">
+            {% for service in services %}
+                <div>
+                    <input type="checkbox" name="subscriptions[]" value="{{ service[0] }}">
+                    <label for="{{ service[0] }}">{{ service[1] }}</label>
+                </div>
+            {% endfor %}
+            </div>
+            <button type="submit" name="setting" value="subscriptions">Update Subscriptions</button>
+        </form>
+    </div>
+
+    <h2 class="settings_header">Profile Picture</h2>
+    <div class="settings_section">
+        <div id="settings_picture_grid">
+            <img src="{{ url_for('static', filename='images/blank_profile.png') }}" id="profile_pic_settings">
+            <div>
+                <form method="post" id="image_upload_form">
+                    <label>You may only upload standard image formats.</label>
+                    <input type="file" name="new_profile_image" accept=".jpg,.jpeg,.png,.bmp,.heic,.tiff" required>
+                    <button type="submit" name="setting" value="image" style="width: 200px;">Replace Picture</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="settings_header">Account Settings</h2>
+    <div class="settings_section">
+        <form method="post" class="account_settings_form">
+            <label for="email">Email:</label>
+            <input name="email" type="email" required>
+            <button type="submit" name="setting" value="email">Update Email</button>
+        </form>
+        <form method="post" class="account_settings_form">
+            <label for="username">Username:</label>
+            <input name="username" required>
+            <button type="submit" name="setting" value="username">Update Email</button>
+        </form>
+    </div>
+{% endblock %}
