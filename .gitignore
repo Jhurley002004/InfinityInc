@@ -12,6 +12,6 @@ build/
 .idea/
 *.swp
 *~
-instance
 .env
 bootstrap.bat
+instance
