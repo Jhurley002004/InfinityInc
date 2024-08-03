@@ -59,6 +59,14 @@ button {
   float: right;
 }
 
+#corner_image {
+  width: 75px;
+}
+
+#corner_username {
+  text-align: center;
+}
+
 /* LANDING PAGE */
 
 #sign_up_h1 {
@@ -141,9 +149,97 @@ button {
   text-align: center;
 }
 
+#main_content {
+  max-width: inherit;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/* BROWSE PAGE */
+
+.multi_movie_slider {
+  max-width: 95%;
+  text-wrap: nowrap;
+  height: 250px;
+  overflow-x: scroll;
+  padding: 0 20px;
+  margin: 0 0 20px 0;
+}
+
+.slider_movie {
+  margin: 5px 10px;
+  display: inline-block;
+  width: 125px;
+  text-align: center;
+}
+
+.slider_image {
+  width: 100px;
+}
+
+.slider_link {
+  width: 100%;
+  text-align: center;
+  text-wrap: wrap;
+}
+
+/* MOVIE PAGE */
+
+#single_movie_grid {
+  display: grid;
+  grid-template-columns: 600px 800px;
+  margin: 40px 50px;
+  gap: 80px;
+}
+
+.movie_poster_large {
+  width: 100%;
+}
+
+.movie_title_large {
+  font-size: 40px;
+  text-align: center;
+}
+
+#movie_stat_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-height: 900px;
+  max-height: 1200px;
+}
+
+.movie_stat {
+  width: 50%;
+}
+
+.stat_header {
+  font-size: 30px;
+  background-color: var(--plum);
+  text-align: center;
+  width: 90%;
+}
+
+.stat_body {
+  width: 90%;
+  margin: 15px 0;
+  font-size: 25px;
+  text-align: center;
+}
+
+.user_stars {
+  font-size: 55px;
+}
+
+#mpa_rating {
+  font-size: 80px;
+  margin: 20px 0;
+}
+
 /* SETTINGS PAGE */
 
-.settings_header {
+.section_header {
   background-color: var(--plum);
   font-size: 35px;
   margin: 0 0 20px 0;

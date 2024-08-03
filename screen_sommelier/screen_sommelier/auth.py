@@ -100,6 +100,7 @@ def landing_page():
             if error is None:
                 session.clear()
                 session['user_id'] = user['id']
+                session['username'] = user['username']
                 return redirect(url_for('library.library_home'))
 
             flash(error)

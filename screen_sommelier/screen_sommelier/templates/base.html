@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 <div id="login_div">
+  {% if not session['user_id'] %}
     <a href="{{ url_for('auth.landing_page') }}"><img src="{{ url_for('static', filename='images/logo.png')}}" id="logo"></a>
     {% block searchbar %}{% endblock %}
     <form method="post" id="login_form">
@@ -14,6 +15,13 @@
         <br>
         <button type="submit" name="action" value="login">Login</button>
     </form>
+  {% else %}
+    <a href="{{ url_for('library.library_home') }}"><img src="{{ url_for('static', filename='images/logo.png')}}" id="logo"></a>
+    <div id="corner_profile">
+      <img id="corner_image" src="{{ url_for('static', filename='images/blank_profile.png') }}">
+      <p id="corner_username">{{ session['username'] }}</p>
+    </div>
+  {% endif %}
 </div>
 <section class="content">
   <header>

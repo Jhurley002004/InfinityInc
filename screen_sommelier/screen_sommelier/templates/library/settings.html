@@ -1,7 +1,7 @@
 {% extends "library/library_base.html" %}
 
 {% block main_content %}
-    <h2 class="settings_header">Subscriptions</h2>
+    <h2 class="section_header">Subscriptions</h2>
     <div class="settings_section">
         <form method="post">
             <div id="subscriptions_grid">
@@ -16,7 +16,7 @@
         </form>
     </div>
 
-    <h2 class="settings_header">Profile Picture</h2>
+    <h2 class="section_header">Profile Picture</h2>
     <div class="settings_section">
         <div id="settings_picture_grid">
             <img src="{{ url_for('static', filename='images/blank_profile.png') }}" id="profile_pic_settings">
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <h2 class="settings_header">Account Settings</h2>
+    <h2 class="section_header">Account Settings</h2>
     <div class="settings_section">
         <form method="post" class="account_settings_form">
             <label for="email">Email:</label>

@@ -1,0 +1,70 @@
+{% extends 'library/library_base.html' %}
+
+{% block main_content %}
+    <h2 class="section_header">Movie Title (Year)</h2>
+    <div id="single_movie_grid">
+        <div id="image_and_title_container">
+            <img class="movie_poster_large" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
+            <h1 class="movie_title_large">Much Longer Title: Demonstrating the Way Text Wraps</h1>
+        </div>
+
+        <div id="movie_stat_container">
+            <div class="movie_stat">
+                <h2 class="stat_header">Your Rating</h2>
+                <p class="stat_body user_stars">☆☆☆☆☆</p>
+            </div>
+
+            <div class="movie_stat">
+                <h2 class="stat_header">Streaming On</h2>
+                <p class="stat_body">Amazon</p>
+                <p class="stat_body">Hulu</p>
+                <p class="stat_body">Netflix</p>
+            </div>
+
+            <div class="movie_stat">
+                <h2 class="stat_header">Year</h2>
+                <p class="stat_body">2024</p>
+            </div>
+            
+            <div class="movie_stat">
+                <h2 class="stat_header">MPA Rated</h2>
+                <h1 class="stat_body" id="mpa_rating">R</h1>
+                <p class="stat_body">Violence, Strong Language, Drug/Alcohol Use</p>
+            </div>
+            
+            <div class="movie_stat">
+                <h2 class="stat_header">Starring</h2>
+                <p class="stat_body">Nicolas Cage</p>
+            </div>
+
+            <div class="movie_stat">
+                <h2 class="stat_header">Directed By</h2>
+                <p class="stat_body">M. Night Shyamalan</p>
+            </div>
+
+            <div class="movie_stat">
+                <h2 class="stat_header">Synopsis</h2>
+                <p class="stat_body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                                    incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+
+            <div class="movie_stat">
+                <h2 class="stat_header">Tags</h2>
+                <p class="stat_body">Action</p>
+                <p class="stat_body">Thriller</p>
+            </div>
+
+            <div class="movie_stat">
+                <h2 class="stat_header">Similar</h2>
+                <div class="slider_movie">
+                    <a href="{{ url_for('library.movie') }}"><img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}"></a>
+                    <a class="slider_link" href="{{ url_for('library.movie') }}"><p>Movie You'd Like</p></a>
+                </div>
+                <div class="slider_movie">
+                    <a href="{{ url_for('library.movie') }}"><img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}"></a>
+                    <a class="slider_link" href="{{ url_for('library.movie') }}"><p>Movie You'd Like</p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
