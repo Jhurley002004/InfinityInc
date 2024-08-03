@@ -12,7 +12,6 @@
 html {
   font-family: sans-serif;
   background: black;
-  padding: 1rem;
   height: 100%;
 }
 
@@ -23,7 +22,7 @@ body {
 }
 
 .content {
-  height: 100%;
+  height: calc(100% - var(--login_div_height));
 }
 
 input {
@@ -140,6 +139,73 @@ button {
   text-decoration: none;
   font-size: 35px;
   text-align: center;
+}
+
+/* SETTINGS PAGE */
+
+.settings_header {
+  background-color: var(--plum);
+  font-size: 35px;
+  margin: 0 0 20px 0;
+  padding: 10px 10px;
+}
+
+.settings_section {
+  margin: 0 0 20px 20px;
+}
+
+.settings_section button {
+  padding: 5px 10px;
+  font-size: 20px;
+}
+
+.settings_section input, .settings_section label {
+  font-size: 22px;
+}
+
+#subscriptions_grid {
+  width: 500px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(2, 300px);
+  grid-template-rows: repeat(4, 50px);
+  margin-bottom: 10px;
+}
+
+#subscriptions_grid label {
+  font-size: 28px;
+}
+
+#subscriptions_grid input {
+  width: 24px;
+  height: 24px;
+}
+
+#settings_picture_grid {
+  display: grid;
+  grid-template-columns: 300px 600px;
+}
+
+#profile_pic_settings {
+  max-width: 300px;
+  height: 300px;
+}
+
+#image_upload_form {
+  height: 100%;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#image_upload_form > * {
+  font-size: 20px;
+  margin: 10px;
+}
+
+.account_settings_form > label {
+  font-size: 28px;
 }
 
 /* 
