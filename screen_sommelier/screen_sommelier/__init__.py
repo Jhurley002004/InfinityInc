@@ -1,12 +1,20 @@
 import os
 from flask import Flask, redirect, url_for
-from . import db
+from dotenv import load_dotenv
 
 def create_app():
     app = Flask(__name__)
+    load_dotenv()
     app.config.from_mapping(
         SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'screen_sommelier.sqlite'),
+        # DATABASE=os.path.join(app.instance_path, 'screen_sommelier.sqlite'),
+        DATABASE = {
+            'HOST': os.getenv('PSQLHOST'),
+            'DB': os.getenv('PSQLDB'),
+            'USER': os.getenv('PSQLUSER'),
+            'PASSWORD': os.getenv('PSQLPWD'),
+            'PORT': os.getenv('PSQLPORT')
+        }
     )
 
     try:

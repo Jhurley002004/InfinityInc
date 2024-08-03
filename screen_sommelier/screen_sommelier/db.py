@@ -1,17 +1,34 @@
-import sqlite3
-
+# import sqlite3
 import click
 from flask import current_app, g
+import psycopg2
+from psycopg2.extras import RealDictCursor
+
+# SQLite3 get_db command
+# def get_db():
+#     if 'db' not in g:
+#         g.db = sqlite3.connect(
+#             current_app.config['DATABASE'],
+#             detect_types=sqlite3.PARSE_DECLTYPES
+#         )
+#         g.db.row_factory = sqlite3.Row
+
+#     return g.db
 
 def get_db():
     if 'db' not in g:
-        g.db = sqlite3.connect(
-            current_app.config['DATABASE'],
-            detect_types=sqlite3.PARSE_DECLTYPES
+        g.db = psycopg2.connect(
+            host = current_app.config['DATABASE']['HOST'],
+            database = current_app.config['DATABASE']['DB'],
+            user = current_app.config['DATABASE']['USER'],
+            password = current_app.config['DATABASE']['PASSWORD'],
+            port = current_app.config['DATABASE']['PORT']
         )
-        g.db.row_factory = sqlite3.Row
 
-    return g.db
+    if 'curs' not in g:
+        g.curs = g.db.cursor(cursor_factory = RealDictCursor)
+
+    return g.db, g.curs
 
 def close_db(e=None):
     db = g.pop('db', None)

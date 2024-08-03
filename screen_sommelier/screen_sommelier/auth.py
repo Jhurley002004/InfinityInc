@@ -14,7 +14,7 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        db = get_db()
+        db, curs = get_db()
         error = None
 
         if not username:
@@ -24,13 +24,15 @@ def register():
 
         if error is None:
             try:
-                db.execute(
-                    "INSERT INTO user (username, password) VALUES (?, ?)",
+                curs.execute(
+                    "INSERT INTO users (username, password) VALUES (%s, %s)",
                     (username, generate_password_hash(password)),
                 )
                 db.commit()
-            except db.IntegrityError:
-                error = f"User {username} is already registered."
+            # except db.IntegrityError:
+            #     error = f"User {username} is already registered."
+            except Exception as e:
+                error = e
             else:
                 # Success, go to the login page.
                 return redirect(url_for("auth.landing_page"))
@@ -46,9 +48,11 @@ def load_logged_in_user():
     if user_id is None:
         g.user = None
     else:
-        g.user = get_db().execute(
-            'SELECT * FROM user WHERE id = ?', (user_id,)
-        ).fetchone()
+        db, curs = get_db()
+        curs.execute(
+            'SELECT * FROM users WHERE id = %s', (user_id,)
+        )
+        g.user = curs.fetchone()
 
 @bp.route('/logout')
 def logout():
@@ -62,9 +66,11 @@ def load_logged_in_user():
     if user_id is None:
         g.user = None
     else:
-        g.user = get_db().execute(
-            'SELECT * FROM user WHERE id = ?', (user_id,)
-        ).fetchone()
+        db, curs = get_db()
+        curs.execute(
+            'SELECT * FROM users WHERE id = %s', (user_id,)
+        )
+        g.user = curs.fetchone()
 
 
 @bp.route('/landing', methods = ('GET', 'POST'))
@@ -76,11 +82,15 @@ def landing_page():
         if action == "login":
             username = request.form['username']
             password = request.form['password']
-            db = get_db()
+            db, curs = get_db()
             error = None
-            user = db.execute(
-                'SELECT * FROM user WHERE username = ?', (username,)
-            ).fetchone()
+            curs.execute(
+                'SELECT * FROM users WHERE username = %s', (username,)
+            )
+            user = curs.fetchone()
+            print(f"The type of user is {type(user)}")
+            print(user)
+            print(user['id'])
 
             if user is None:
                 error = 'Incorrect username.'
