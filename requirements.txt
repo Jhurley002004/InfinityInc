@@ -3,3 +3,4 @@ pytest
 requests
 Pillow
 python-dotenv
+psycopg2
