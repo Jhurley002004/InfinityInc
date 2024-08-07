@@ -1,7 +1,7 @@
-import requests
 import sqlite3
 from flask import current_app, g
-from requests.exceptions import ConnectTimeout, HTTPError, Timeout, RequestException
+from screen_sommelier.screen_sommelier.MovieAPI import MovieAPI
+
 
 def get_db():
     if 'db' not in g:
@@ -13,37 +13,6 @@ def get_db():
 
     return g.db
 
-def fetch_movies(category):
-    if category == 'popular':
-        url = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
-    elif category == 'top_rated':
-        url = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1"
-    
-    headers = {
-    "accept": "application/json",
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYjc4YWI2ZTAzYjNiZDNmNjEwMWQ5MzIwMTZkMTM4NCIsIm5iZiI6MTcyMTk1ODk0Mi4yODIyMzMsInN1YiI6IjY2YTAwZTgzNjE3ZWVjZWViYjI2MTkwZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VGA1Be5og8WjBMLTXpmBZzG9keDk85aa_GMVbSmwB6E"
-    }
-    try:
-        response = requests.get(url, headers=headers, timeout=10)
-        response.raise_for_status()
-        return response.json().get('results', [])
-    except (ConnectTimeout, HTTPError, Timeout, RequestException) as e:
-        print(f"An error occurred: {e}")
-        return []
-
-def fetch_genres():
-    url = "https://api.themoviedb.org/3/genre/movie/list?language=en-US"
-    headers = {
-    "accept": "application/json",
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYjc4YWI2ZTAzYjNiZDNmNjEwMWQ5MzIwMTZkMTM4NCIsIm5iZiI6MTcyMTk1ODk0Mi4yODIyMzMsInN1YiI6IjY2YTAwZTgzNjE3ZWVjZWViYjI2MTkwZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VGA1Be5og8WjBMLTXpmBZzG9keDk85aa_GMVbSmwB6E"
-    }
-    try:
-        response = requests.get(url, headers=headers, timeout=10)
-        response.raise_for_status()
-        return {genre['id']: genre['name'] for genre in response.json().get('genres', [])}
-    except (ConnectTimeout, HTTPError, Timeout, RequestException) as e:
-        print(f"An error occurred: {e}")
-        return {}
 
 def insert_movie(conn, movie, genres, category):
     genre_names = ', '.join([genres.get(genre_id, 'Unknown') for genre_id in movie.get('genre_ids', [])])
@@ -76,14 +45,17 @@ def insert_movie(conn, movie, genres, category):
     ))
     conn.commit()
 
+
 def fetch_and_store_movies():
     db = get_db()
-    genres = fetch_genres()
+    api = MovieAPI()
+    genres = api.fetch_genres()
+
     # Fetch and insert popular movies
-    popular_movies = fetch_movies('popular')
+    popular_movies = api.query_moviedb("movie/popular?language=en-US&page=1")
     for movie in popular_movies:
         insert_movie(db, movie, genres, 'popular')
     # Fetch and insert top-rated movies
-    top_rated_movies = fetch_movies('top_rated')
+    top_rated_movies = api.query_moviedb("movie/top_rated?language=en-US&page=1")
     for movie in top_rated_movies:
         insert_movie(db, movie, genres, 'top_rated')

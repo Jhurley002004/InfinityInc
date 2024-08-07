@@ -58,3 +58,8 @@ class MovieAPI:
         random_id = random.randint(1, int(max_id))
         print(random_id)
         return self.get_movie_by_id(random_id)
+    
+    
+    def fetch_genres(self):
+        genres = self.query_moviedb("genre/movie/list?language=en-US")
+        return {genre['id']: genre['name'] for genre in genres.get('genres', [])}
