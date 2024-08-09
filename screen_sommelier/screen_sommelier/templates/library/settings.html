@@ -1,5 +1,7 @@
 {% extends "library/library_base.html" %}
 
+{% block title %}Settings{% endblock %}
+
 {% block main_content %}
     <h2 class="section_header">Subscriptions</h2>
     <div class="settings_section">
@@ -40,7 +42,13 @@
         <form method="post" class="account_settings_form">
             <label for="username">Username:</label>
             <input name="username" required>
-            <button type="submit" name="setting" value="username">Update Email</button>
+            <button type="submit" name="setting" value="username">Update Username</button>
+        </form>
+        <form method="post" class="account_settings_form">
+            <label for="change_password">Change Password:</label>
+            <input name="new_password" type="password" required>
+            <input name="repeat_password" type="password" required>
+            <button type="submit" name="setting" value="change_password">Update Password</button>
         </form>
     </div>
 {% endblock %}

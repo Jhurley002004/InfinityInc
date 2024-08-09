@@ -1,25 +1,28 @@
 <!doctype html>
 <title>{% block title %}{% endblock %} - Screen Sommelier</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='scripts.js') }}"></script>
 
 <div id="login_div">
   {% if not session['user_id'] %}
     <a href="{{ url_for('auth.landing_page') }}"><img src="{{ url_for('static', filename='images/logo.png')}}" id="logo"></a>
-    {% block searchbar %}{% endblock %}
     <form method="post" id="login_form">
-        <label for="username">Username</label>
-        <input name="username" required>
-        <br>
-        <label for="password">Password</label>
-        <input name="password" id="password" type="password" required>
-        <br>
-        <button type="submit" name="action" value="login">Login</button>
+      <label for="username">Username</label>
+      <input name="username" required>
+      <br>
+      <label for="password">Password</label>
+      <input name="password" id="password" type="password" required>
+      <br>
+      <button type="submit" name="action" value="login">Login</button>
     </form>
-  {% else %}
+    {% else %}
     <a href="{{ url_for('library.library_home') }}"><img src="{{ url_for('static', filename='images/logo.png')}}" id="logo"></a>
+    {% block searchbar %}{% endblock %}
     <div id="corner_profile">
-      <img id="corner_image" src="{{ url_for('static', filename='images/blank_profile.png') }}">
-      <p id="corner_username">{{ session['username'] }}</p>
+      <a href="{{ url_for('library.settings') }}">
+        <img id="corner_image" src="{{ url_for('static', filename='images/blank_profile.png') }}">
+        <p id="corner_username">{{ session['username'] }}</p>
+      </a>
     </div>
   {% endif %}
 </div>
@@ -27,8 +30,20 @@
   <header>
     {% block header %}{% endblock %}
   </header>
-  {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div id="flash">
+      <div id="flash_header">
+        <h2>Notice:</h2>
+        <button id="remove_flash_button" onclick="removeFlash()">X</button>
+      </div>
+      <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+  {% endwith %}
   {% block content %}{% endblock %}
 </section>
