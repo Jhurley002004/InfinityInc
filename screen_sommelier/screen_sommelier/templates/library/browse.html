@@ -5,8 +5,10 @@
     <div class="multi_movie_slider">
         {% for i in range(18) %}
             <div class="slider_movie">
-                <a href="{{ url_for('library.movie') }}"><img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}"></a>
-                <a class="slider_link" href="{{ url_for('library.movie') }}"><p>Movie You'd Like</p></a>
+                <a href="{{ url_for('library.movie') }}" class="slider_link">
+                    <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
+                    <p>Movie You'd Like</p>
+                </a>
             </div>
         {% endfor %}
     </div>
@@ -15,8 +17,10 @@
     <div class="multi_movie_slider">
         {% for i in range(18) %}
             <div class="slider_movie">
-                <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
-                <a class="slider_link" href="{{ url_for('library.movie') }}"><p>New & Exciting</p></a>
+                <a href="{{ url_for('library.movie') }}" class="slider_link">
+                    <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
+                    <p>New & Exciting</p>
+                </a>
             </div>
         {% endfor %}
     </div>
@@ -25,8 +29,10 @@
     <div class="multi_movie_slider">
         {% for i in range(18) %}
             <div class="slider_movie">
-                <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
-                <a class="slider_link" href="{{ url_for('library.movie') }}"><p>Nicolas Cage Film</p></a>
+                <a href="{{ url_for('library.movie') }}" class="slider_link">
+                    <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
+                    <p>Nicolas Cage Film</p>
+                </a>
             </div>
         {% endfor %}
     </div>
@@ -35,8 +41,10 @@
     <div class="multi_movie_slider">
         {% for i in range(18) %}
             <div class="slider_movie">
-                <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
-                <a class="slider_link" href="{{ url_for('library.movie') }}"><p>Very Scary</p></a>
+                <a href="{{ url_for('library.movie') }}" class="slider_link">
+                    <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
+                    <p>Very Scary</p>
+                </a>
             </div>
         {% endfor %}
     </div>

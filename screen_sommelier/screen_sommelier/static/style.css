@@ -214,7 +214,7 @@ button {
   text-wrap: nowrap;
   height: 250px;
   overflow-x: scroll;
-  padding: 0 20px;
+  padding: 10px 20px;
   margin: 0 0 20px 0;
 }
 
@@ -223,6 +223,11 @@ button {
   display: inline-block;
   width: 125px;
   text-align: center;
+  transition: transform 0.2s;
+}
+
+.slider_movie:hover {
+  transform: translateY(-10px);
 }
 
 .slider_image {
@@ -233,6 +238,7 @@ button {
   width: 100%;
   text-align: center;
   text-wrap: wrap;
+  display: block;
 }
 
 /* MOVIE PAGE */
@@ -281,8 +287,9 @@ button {
   text-align: center;
 }
 
-.user_stars {
-  font-size: 55px;
+.rating_star {
+  width: 50px;
+  background-color: black;
 }
 
 #mpa_rating {

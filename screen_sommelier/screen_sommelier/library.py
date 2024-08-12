@@ -11,8 +11,13 @@ bp = Blueprint('library', __name__, url_prefix = '/library')
 def library_home():
     return render_template("library/browse.html")
 
-@bp.route('/movie')
+@bp.route('/movie', methods = ('GET', 'POST'))
 def movie():
+    if request.method == 'POST':
+        # The stars for user rating is a form. Each star has a value. 
+        # This is a placeholder for adding the user's rating to the db
+        pass
+    
     return render_template('library/movie.html')
 
 @bp.route('/settings', methods = ('GET', 'POST'))
