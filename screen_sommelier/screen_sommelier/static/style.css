@@ -1,5 +1,6 @@
 :root {
   --plum: hsl(320, 65%, 32%);
+  --highlight_plum: hsl(320, 65%, 42%);
   --login_div_height: 150px;
   --logo_width: 250px;
 }
@@ -16,7 +17,9 @@ html {
 }
 
 body {
-  max-width: 1960px;
+  width: 80%;
+  min-width: 1250px;
+  max-width: 1650px;
   margin: 0 auto;
   height: 100%;
 }
@@ -35,6 +38,35 @@ input {
 button {
   background-color: var(--plum);
   font-size: 25px;
+}
+
+#flash {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  min-width: 250px;
+  max-width: 450px;
+  padding: 10px 20px;
+  transform: translateX(-50%);
+  border: 2px solid var(--plum);
+}
+
+#flash_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#flash_header > h2 {
+  margin: 0;
+}
+
+#flash > ul {
+  list-style: '- ';
+}
+
+#remove_flash_button {
+  height: 26px;
+  font-size: 18px;
 }
 
 #login_div {
@@ -59,8 +91,16 @@ button {
   float: right;
 }
 
+#corner_profile {
+  transform: translateX(-40%);
+}
+
 #corner_image {
   width: 75px;
+}
+
+#corner_profile > a {
+  text-decoration: none;
 }
 
 #corner_username {
@@ -128,6 +168,7 @@ button {
 
 #searchbar {
   width: 500px;
+  height: 32px;
 }
 
 .content_container {
@@ -142,11 +183,22 @@ button {
   height: 100%;
 }
 
-#sidebar * {
+#sidebar > a {
+  text-decoration: none;
+  padding: 20px 0;
+}
+
+.sidebar_link {
   background-color: var(--plum);
   text-decoration: none;
   font-size: 35px;
   text-align: center;
+  margin: 0;
+  padding: 20px 0;
+}
+
+.sidebar_link:hover {
+  background-color: var(--highlight_plum);
 }
 
 #main_content {
@@ -187,7 +239,7 @@ button {
 
 #single_movie_grid {
   display: grid;
-  grid-template-columns: 600px 800px;
+  grid-template-columns: 500px 600px;
   margin: 40px 50px;
   gap: 80px;
 }
@@ -206,8 +258,8 @@ button {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  min-height: 900px;
-  max-height: 1200px;
+  min-height: 600px;
+  max-height: 900px;
 }
 
 .movie_stat {
@@ -219,11 +271,12 @@ button {
   background-color: var(--plum);
   text-align: center;
   width: 90%;
+  margin: 10px 0;
 }
 
 .stat_body {
   width: 90%;
-  margin: 15px 0;
+  margin: 10px 0;
   font-size: 25px;
   text-align: center;
 }
@@ -300,15 +353,19 @@ button {
   margin: 10px;
 }
 
+.account_settings_form > * {
+  display: block;
+}
+
 .account_settings_form > label {
   font-size: 28px;
 }
 
-/* 
-.flash {
-  margin: 1em 0;
-  padding: 1em;
-  background: #cae6f6;
-  border: 1px solid #377ba8;
+.account_settings_form > input {
+  margin: 15px 0 15px 20px;
+  width: 500px;
 }
-*/
+
+.account_settings_form > button {
+  margin: 0 0 30px 20px;
+}
