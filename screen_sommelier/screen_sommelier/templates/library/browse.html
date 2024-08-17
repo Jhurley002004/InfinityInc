@@ -3,11 +3,11 @@
 {% block main_content %}
     <h2 class="section_header">Recommendations</h2>
     <div class="multi_movie_slider">
-        {% for i in range(12) %}
+        {% for movie in first_row %}
             <div class="slider_movie">
-                <a href="{{ url_for('library.movie') }}" class="slider_link">
-                    <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
-                    <p>Movie You'd Like</p>
+                <a title="{{ movie['title'] }}" href="{{ url_for('library.movie', id = movie['imdb_id']) }}" class="slider_link">
+                    <img class="slider_image" src="data:image/png;base64,{{ movie['poster_image'] }}">
+                    <p class="slider_movie_title">{{ movie['title'] }}</p>
                 </a>
             </div>
         {% endfor %}
@@ -15,11 +15,11 @@
 
     <h2 class="section_header">New Releases</h2>
     <div class="multi_movie_slider">
-        {% for i in range(12) %}
+        {% for movie in second_row %}
             <div class="slider_movie">
-                <a href="{{ url_for('library.movie') }}" class="slider_link">
-                    <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
-                    <p>New & Exciting</p>
+                <a title="{{ movie['title'] }}" href="{{ url_for('library.movie', id = movie['imdb_id']) }}" class="slider_link">
+                    <img class="slider_image" src="data:image/png;base64,{{ movie['poster_image'] }}">
+                    <p class="slider_movie_title">{{ movie['title'] }}</p>
                 </a>
             </div>
         {% endfor %}
@@ -27,11 +27,11 @@
     
     <h2 class="section_header">By Genre: Action</h2>
     <div class="multi_movie_slider">
-        {% for i in range(12) %}
+        {% for movie in third_row %}
             <div class="slider_movie">
-                <a href="{{ url_for('library.movie') }}" class="slider_link">
-                    <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
-                    <p>Nicolas Cage Film</p>
+                <a title="{{ movie['title'] }}" href="{{ url_for('library.movie', id = movie['imdb_id']) }}" class="slider_link">
+                    <img class="slider_image" src="data:image/png;base64,{{ movie['poster_image'] }}">
+                    <p class="slider_movie_title">{{ movie['title'] }}</p>
                 </a>
             </div>
         {% endfor %}
@@ -39,11 +39,11 @@
 
     <h2 class="section_header">By Genre: Horror</h2>
     <div class="multi_movie_slider">
-        {% for i in range(12) %}
+        {% for movie in fourth_row %}
             <div class="slider_movie">
-                <a href="{{ url_for('library.movie') }}" class="slider_link">
-                    <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
-                    <p>Very Scary</p>
+                <a title="{{ movie['title'] }}" href="{{ url_for('library.movie', id = movie['imdb_id']) }}" class="slider_link">
+                    <img class="slider_image" src="data:image/png;base64,{{ movie['poster_image'] }}">
+                    <p class="slider_movie_title">{{ movie['title'] }}</p>
                 </a>
             </div>
         {% endfor %}

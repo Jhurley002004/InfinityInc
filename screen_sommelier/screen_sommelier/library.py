@@ -4,21 +4,41 @@ from flask import (
 
 from .auth import login_required
 from .db import get_db
+import base64
+import io
 
 bp = Blueprint('library', __name__, url_prefix = '/library')
 
 @bp.route('/')
 def library_home():
-    return render_template("library/browse.html")
+    db, curs = get_db()
 
-@bp.route('/movie', methods = ('GET', 'POST'))
-def movie():
+    curs.execute('SELECT * FROM movies ORDER BY RANDOM() LIMIT 48')
+    query = curs.fetchall()
+    for movie in query:
+        binary_poster = movie['poster_image']
+        converted = base64.b64encode(binary_poster).decode('utf-8')
+        movie['poster_image'] = converted
+        # print(movie)
+    return render_template("library/browse.html", first_row = query[0:12], second_row = query[12:24], third_row = query[24:36], fourth_row = query[36:48])
+
+@bp.route('/movie/<id>', methods = ('GET', 'POST'))
+def movie(id):
     if request.method == 'POST':
         # The stars for user rating is a form. Each star has a value. 
         # This is a placeholder for adding the user's rating to the db
         pass
     
-    return render_template('library/movie.html')
+    db, curs = get_db()
+
+    print(id)
+    curs.execute('SELECT * FROM movies WHERE imdb_id = %s', (id,))
+    query = curs.fetchone()
+    binary = query['poster_image']
+    converted = base64.b64encode(binary).decode('utf-8')
+    query['poster_image'] = converted
+
+    return render_template('library/movie.html', movie = query)
 
 @bp.route('/settings', methods = ('GET', 'POST'))
 def settings():

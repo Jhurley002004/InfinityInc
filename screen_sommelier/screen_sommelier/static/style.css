@@ -237,8 +237,12 @@ button {
 .slider_link {
   width: 100%;
   text-align: center;
-  text-wrap: wrap;
+  /* text-wrap: wrap; */
   display: block;
+}
+
+.slider_movie_title {
+  overflow: hidden;
 }
 
 /* MOVIE PAGE */
@@ -300,10 +304,13 @@ button {
   background-color: black;
 }
 
-
 #mpa_rating {
   font-size: 80px;
 margin: 20px 0;
+}
+
+.synopsis {
+  font-size: 18px;
 }
 
 /* SETTINGS PAGE */
