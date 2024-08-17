@@ -292,9 +292,18 @@ button {
   background-color: black;
 }
 
+.gold_star {
+  background-color: gold;
+}
+
+.empty_star {
+  background-color: black;
+}
+
+
 #mpa_rating {
   font-size: 80px;
-  margin: 20px 0;
+margin: 20px 0;
 }
 
 /* SETTINGS PAGE */

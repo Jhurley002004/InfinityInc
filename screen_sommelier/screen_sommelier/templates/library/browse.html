@@ -3,7 +3,7 @@
 {% block main_content %}
     <h2 class="section_header">Recommendations</h2>
     <div class="multi_movie_slider">
-        {% for i in range(18) %}
+        {% for i in range(12) %}
             <div class="slider_movie">
                 <a href="{{ url_for('library.movie') }}" class="slider_link">
                     <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
@@ -15,7 +15,7 @@
 
     <h2 class="section_header">New Releases</h2>
     <div class="multi_movie_slider">
-        {% for i in range(18) %}
+        {% for i in range(12) %}
             <div class="slider_movie">
                 <a href="{{ url_for('library.movie') }}" class="slider_link">
                     <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
@@ -27,7 +27,7 @@
     
     <h2 class="section_header">By Genre: Action</h2>
     <div class="multi_movie_slider">
-        {% for i in range(18) %}
+        {% for i in range(12) %}
             <div class="slider_movie">
                 <a href="{{ url_for('library.movie') }}" class="slider_link">
                     <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
@@ -39,7 +39,7 @@
 
     <h2 class="section_header">By Genre: Horror</h2>
     <div class="multi_movie_slider">
-        {% for i in range(18) %}
+        {% for i in range(12) %}
             <div class="slider_movie">
                 <a href="{{ url_for('library.movie') }}" class="slider_link">
                     <img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">

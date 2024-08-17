@@ -13,12 +13,12 @@
         <div id="movie_stat_container">
             <div class="movie_stat">
                 <h2 class="stat_header">Your Rating</h2>
-                <form method="post">
-                    <input type="image" class="rating_star" name="rating" value="1" src="{{ url_for('static', filename='images/star_filled.png') }}">
-                    <input type="image" class="rating_star" name="rating" value="2" src="{{ url_for('static', filename='images/star_filled.png') }}">
-                    <input type="image" class="rating_star" name="rating" value="3" src="{{ url_for('static', filename='images/star_filled.png') }}">
-                    <input type="image" class="rating_star" name="rating" value="4" src="{{ url_for('static', filename='images/star_empty.png') }}">
-                    <input type="image" class="rating_star" name="rating" value="5" src="{{ url_for('static', filename='images/star_empty.png') }}">
+                <form id="star_form" method="post">
+                    <input type="image" id="star_1" class="rating_star" name="rating" value="1" src="{{ url_for('static', filename='images/star_filled.png') }}">
+                    <input type="image" id="star_2" class="rating_star" name="rating" value="2" src="{{ url_for('static', filename='images/star_filled.png') }}">
+                    <input type="image" id="star_3" class="rating_star" name="rating" value="3" src="{{ url_for('static', filename='images/star_filled.png') }}">
+                    <input type="image" id="star_4" class="rating_star" name="rating" value="4" src="{{ url_for('static', filename='images/star_empty.png') }}">
+                    <input type="image" id="star_5" class="rating_star" name="rating" value="5" src="{{ url_for('static', filename='images/star_empty.png') }}">
                 </form>
             </div>
 
