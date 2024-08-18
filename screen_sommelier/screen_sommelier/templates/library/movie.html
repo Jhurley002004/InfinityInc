@@ -1,19 +1,25 @@
 {% extends 'library/library_base.html' %}
 
-{% block title %}Movie Title Here{% endblock %}
+{% block title %}{{ movie['title'] }}{% endblock %}
 
 {% block main_content %}
-    <h2 class="section_header">Movie Title (Year)</h2>
+    <h2 class="section_header">{{ movie['title'] }} ({{ movie['year'] }})</h2>
     <div id="single_movie_grid">
         <div id="image_and_title_container">
-            <img class="movie_poster_large" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}">
-            <h1 class="movie_title_large">Much Longer Title: Demonstrating the Way Text Wraps</h1>
+            <img class="movie_poster_large" src="data:image/png;base64,{{ movie['poster_image'] }}">
+            <h1 class="movie_title_large">{{ movie['title'] }}</h1>
         </div>
 
         <div id="movie_stat_container">
             <div class="movie_stat">
                 <h2 class="stat_header">Your Rating</h2>
-                <p class="stat_body user_stars">☆☆☆☆☆</p>
+                <form id="star_form" method="post">
+                    <input type="image" id="star_1" class="rating_star" name="rating" value="1" src="{{ url_for('static', filename='images/star_filled.png') }}">
+                    <input type="image" id="star_2" class="rating_star" name="rating" value="2" src="{{ url_for('static', filename='images/star_filled.png') }}">
+                    <input type="image" id="star_3" class="rating_star" name="rating" value="3" src="{{ url_for('static', filename='images/star_filled.png') }}">
+                    <input type="image" id="star_4" class="rating_star" name="rating" value="4" src="{{ url_for('static', filename='images/star_empty.png') }}">
+                    <input type="image" id="star_5" class="rating_star" name="rating" value="5" src="{{ url_for('static', filename='images/star_empty.png') }}">
+                </form>
             </div>
 
             <div class="movie_stat">
@@ -25,7 +31,7 @@
 
             <div class="movie_stat">
                 <h2 class="stat_header">Year</h2>
-                <p class="stat_body">2024</p>
+                <p class="stat_body">{{ movie['year'] }}</p>
             </div>
             
             <div class="movie_stat">
@@ -46,26 +52,13 @@
 
             <div class="movie_stat">
                 <h2 class="stat_header">Synopsis</h2>
-                <p class="stat_body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                                    incididunt ut labore et dolore magna aliqua.</p>
+                <p class="stat_body synopsis">{{ movie['plot'] }}</p>
             </div>
 
             <div class="movie_stat">
                 <h2 class="stat_header">Tags</h2>
                 <p class="stat_body">Action</p>
                 <p class="stat_body">Thriller</p>
-            </div>
-
-            <div class="movie_stat">
-                <h2 class="stat_header">Similar</h2>
-                <div class="slider_movie">
-                    <a href="{{ url_for('library.movie') }}"><img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}"></a>
-                    <a class="slider_link" href="{{ url_for('library.movie') }}"><p>Movie You'd Like</p></a>
-                </div>
-                <div class="slider_movie">
-                    <a href="{{ url_for('library.movie') }}"><img class="slider_image" src="{{ url_for('static', filename='images/blank_movie_poster.jpg') }}"></a>
-                    <a class="slider_link" href="{{ url_for('library.movie') }}"><p>Movie You'd Like</p></a>
-                </div>
             </div>
         </div>
     </div>

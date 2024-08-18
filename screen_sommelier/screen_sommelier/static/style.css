@@ -214,7 +214,7 @@ button {
   text-wrap: nowrap;
   height: 250px;
   overflow-x: scroll;
-  padding: 0 20px;
+  padding: 10px 20px;
   margin: 0 0 20px 0;
 }
 
@@ -223,6 +223,11 @@ button {
   display: inline-block;
   width: 125px;
   text-align: center;
+  transition: transform 0.2s;
+}
+
+.slider_movie:hover {
+  transform: translateY(-10px);
 }
 
 .slider_image {
@@ -232,7 +237,12 @@ button {
 .slider_link {
   width: 100%;
   text-align: center;
-  text-wrap: wrap;
+  /* text-wrap: wrap; */
+  display: block;
+}
+
+.slider_movie_title {
+  overflow: hidden;
 }
 
 /* MOVIE PAGE */
@@ -281,13 +291,26 @@ button {
   text-align: center;
 }
 
-.user_stars {
-  font-size: 55px;
+.rating_star {
+  width: 50px;
+  background-color: black;
+}
+
+.gold_star {
+  background-color: gold;
+}
+
+.empty_star {
+  background-color: black;
 }
 
 #mpa_rating {
   font-size: 80px;
-  margin: 20px 0;
+margin: 20px 0;
+}
+
+.synopsis {
+  font-size: 18px;
 }
 
 /* SETTINGS PAGE */
